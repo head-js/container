@@ -1,0 +1,6 @@
+{
+  "name": "@head/container",
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
