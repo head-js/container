@@ -6,8 +6,8 @@ const pkg = require('./package.json');
 
 gulp.task('default', function () {
   return gulp
-    .src('dist/snippet.js')
+    .src('../container/dist/snippet.js')
     .pipe(header('/* ' + pkg.name + ' ' + pkg.version + ' */\n'))
     .pipe(rev())
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('../container/dist'));
 });

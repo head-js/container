@@ -2,7 +2,7 @@ import eslint from '@rollup/plugin-eslint';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import terser from '@rollup/plugin-terser';
+// import terser from '@rollup/plugin-terser';
 
 
 export default [
@@ -14,7 +14,6 @@ export default [
       // 'core-js/modules/es.promise.js',
       // 'core-js/modules/es.string.iterator.js',
       // 'core-js/modules/web.dom-collections.iterator.js',
-      'core-js/modules/es.array.concat.js',
       // 'core-js/modules/es.array.iterator.js',
     ],
 
@@ -34,13 +33,13 @@ export default [
         babelHelpers: 'bundled',
       }),
 
-      terser({
-        format: {
-          max_line_len: 120,
-        }
-      }),
+      // terser({
+      //   format: {
+      //     max_line_len: 120,
+      //   }
+      // }),
     ],
 
-    output: { file: '../container/dist/snippet.js', format: 'iife', name: 'head.container', exports: 'default' },
+    output: { file: 'dist/container.js', format: 'cjs' },
   },
 ];

@@ -1,30 +1,26 @@
 function Container(options) {
-  const { id, desc } = options;
+  const { id, desc, $ } = options;
   this.id = id;
   this.desc = desc;
-  this.fns = {};
+  this.$ = $;
   return this;
 }
 
 
-Container.prototype.script = function (name, fn) {
-  this.fns[name] = fn;
-  return this;
-};
-
-
 Container.prototype.fn = function (name) {
-  return this.fns[name];
+  return this.$.fn.call(this.$, this.id, name);
 };
 
 
 function Snippet() {
   this.$ = {};
+  this.$fn = {};
 }
 
 
 Snippet.prototype.create = function (options) {
-  const $c = new Container(options);
+  const $ = this;
+  const $c = new Container({ ...options, $ });
   this.$[options.id] = $c;
   return $c;
 };
@@ -37,14 +33,14 @@ Snippet.prototype.id = function (id) {
 
 
 Snippet.prototype.script = function (id, name, fn) {
-  const $c = this.id(id);
-  $c.script(name, fn);
+  const n = `${id}/${name}`;
+  this.$fn[n] = fn;
 };
 
 
 Snippet.prototype.fn = function (id, name) {
-  const $c = this.id(id);
-  return $c.fn(name);
+  const n = `${id}/${name}`;
+  return this.$fn[n];
 };
 
 
