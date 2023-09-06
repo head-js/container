@@ -1,3 +1,4 @@
+/* @head.js/container-snippet 0.0.3 */
 this.head=this.head||{},this.head.container=function(){"use strict";function t(t,e){var i=Object.keys(t)
 ;if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);e&&(r=r.filter((function(e){
 return Object.getOwnPropertyDescriptor(t,e).enumerable}))),i.push.apply(i,r)}return i}function e(e){

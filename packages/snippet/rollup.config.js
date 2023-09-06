@@ -10,12 +10,8 @@ export default [
     input: 'src/index.js',
 
     external: [
-      // 'core-js/modules/es.object.to-string.js',
-      // 'core-js/modules/es.promise.js',
-      // 'core-js/modules/es.string.iterator.js',
-      // 'core-js/modules/web.dom-collections.iterator.js',
       'core-js/modules/es.array.concat.js',
-      // 'core-js/modules/es.array.iterator.js',
+      'core-js/modules/es.object.assign.js',
     ],
 
     plugins: [
