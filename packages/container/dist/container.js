@@ -2,6 +2,30 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function Http() {}
+Http.prototype.fn = function () {
+  var _window = window,
+    head = _window.head;
+  var fn = head.container.fn('$', 'http');
+  return fn;
+};
+Http.prototype.get = function () {
+  var fn = this.fn();
+  return fn.get.apply(fn, arguments);
+};
+Http.prototype.post = function () {
+  var fn = this.fn();
+  return fn.post.apply(fn, arguments);
+};
+Http.prototype.put = function () {
+  var fn = this.fn();
+  return fn.put.apply(fn, arguments);
+};
+Http.prototype["delete"] = function () {
+  var fn = this.fn();
+  return fn["delete"].apply(fn, arguments);
+};
+
 function $create(options) {
   var _window = window,
     head = _window.head;
@@ -19,7 +43,9 @@ function $dispatch(action) {
   var fn = head.container.fn('$', 'dispatch');
   fn(action);
 }
+var $http = new Http();
 
 exports.$create = $create;
 exports.$dispatch = $dispatch;
+exports.$http = $http;
 exports.$session = $session;

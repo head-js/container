@@ -1,3 +1,6 @@
+import Http from './http';
+
+
 export function $create(options) {
   const { head } = window;
   const $c = head.container.create(options);
@@ -16,3 +19,6 @@ export function $dispatch(action) {
   const fn = head.container.fn('$', 'dispatch');
   fn(action);
 }
+
+
+export const $http = new Http();
