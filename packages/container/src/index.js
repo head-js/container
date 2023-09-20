@@ -1,6 +1,3 @@
-import Http from './http';
-
-
 export function $create(options) {
   const { head } = window;
   const $c = head.container.create(options);
@@ -8,17 +5,19 @@ export function $create(options) {
 }
 
 
-export function $session() {
+export function $script(id, name, fn) {
   const { head } = window;
-  return head.container.session();
+  if (fn) {
+    head.container.script(id, name, fn);
+  } else {
+    const fn1 = head.container.script(id, name);
+    return fn1;
+  }
 }
 
 
-export function $dispatch(action) {
-  const { head } = window;
-  const fn = head.container.fn('$', 'dispatch');
-  fn(action);
-}
+// $ sugar
+import $session from './$session'; // eslint-disable-line import/first
+import $dispatch from './$dispatch'; // eslint-disable-line import/first
 
-
-export const $http = new Http();
+export { $session, $dispatch };

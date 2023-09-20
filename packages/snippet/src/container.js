@@ -8,8 +8,8 @@ function Container(options) {
 }
 
 
-Container.prototype.fn = function (name) {
-  return this.$.fn.call(this.$, this.id, name);
+Container.prototype.script = function (name, fn) {
+  return this.$.script.call(this.$, this.id, name, fn);
 };
 
 

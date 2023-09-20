@@ -1,36 +1,37 @@
-
 function Http() {}
 
 
-Http.prototype.fn = function () {
+Http.prototype.script = function () {
   const { head } = window;
-  const fn = head.container.fn('$', 'http');
+  const fn = head.container.script('$$', 'http');
   return fn;
 };
 
 
 Http.prototype.get = function (...args) {
-  const fn = this.fn();
+  const fn = this.script();
   return fn.get(...args);
 };
 
 
 Http.prototype.post = function (...args) {
-  const fn = this.fn();
+  const fn = this.script();
   return fn.post(...args);
 };
 
 
 Http.prototype.put = function (...args) {
-  const fn = this.fn();
+  const fn = this.script();
   return fn.put(...args);
 };
 
 
 Http.prototype.delete = function (...args) {
-  const fn = this.fn();
+  const fn = this.script();
   return fn.delete(...args);
 };
 
 
-export default Http;
+const $http = new Http();
+
+export default $http;

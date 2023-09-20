@@ -2,29 +2,23 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function Http() {}
-Http.prototype.fn = function () {
+function $session(update) {
   var _window = window,
     head = _window.head;
-  var fn = head.container.fn('$', 'http');
-  return fn;
-};
-Http.prototype.get = function () {
-  var fn = this.fn();
-  return fn.get.apply(fn, arguments);
-};
-Http.prototype.post = function () {
-  var fn = this.fn();
-  return fn.post.apply(fn, arguments);
-};
-Http.prototype.put = function () {
-  var fn = this.fn();
-  return fn.put.apply(fn, arguments);
-};
-Http.prototype["delete"] = function () {
-  var fn = this.fn();
-  return fn["delete"].apply(fn, arguments);
-};
+  var fn = head.container.script('$', 'session');
+  if (update) {
+    fn(update);
+  } else {
+    return fn(update);
+  }
+}
+
+function $dispatch(action) {
+  var _window = window,
+    head = _window.head;
+  var fn = head.container.script('$', 'dispatch');
+  fn(action);
+}
 
 function $create(options) {
   var _window = window,
@@ -32,20 +26,18 @@ function $create(options) {
   var $c = head.container.create(options);
   return $c;
 }
-function $session() {
+function $script(id, name, fn) {
   var _window2 = window,
     head = _window2.head;
-  return head.container.session();
+  if (fn) {
+    head.container.script(id, name, fn);
+  } else {
+    var fn1 = head.container.script(id, name);
+    return fn1;
+  }
 }
-function $dispatch(action) {
-  var _window3 = window,
-    head = _window3.head;
-  var fn = head.container.fn('$', 'dispatch');
-  fn(action);
-}
-var $http = new Http();
 
 exports.$create = $create;
 exports.$dispatch = $dispatch;
-exports.$http = $http;
+exports.$script = $script;
 exports.$session = $session;

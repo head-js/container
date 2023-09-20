@@ -37,4 +37,97 @@ export default [
 
     output: { file: 'dist/container.js', format: 'cjs' },
   },
+  {
+    input: 'src/$$http.js',
+
+    external: [
+    ],
+
+    plugins: [
+      eslint(),
+
+      commonjs({
+        sourceMap: false,
+      }),
+
+      resolve({
+        browser: true,
+      }),
+
+      babel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
+      }),
+
+      // terser({
+      //   format: {
+      //     max_line_len: 120,
+      //   }
+      // }),
+    ],
+
+    output: { file: '$$/http.js', format: 'cjs', exports: 'default' },
+  },
+  {
+    input: 'src/$$edge.js',
+
+    external: [
+    ],
+
+    plugins: [
+      eslint(),
+
+      commonjs({
+        sourceMap: false,
+      }),
+
+      resolve({
+        browser: true,
+      }),
+
+      babel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
+      }),
+
+      // terser({
+      //   format: {
+      //     max_line_len: 120,
+      //   }
+      // }),
+    ],
+
+    output: { file: '$$/edge.js', format: 'cjs', exports: 'default' },
+  },
+  {
+    input: 'src/$$emitter.js',
+
+    external: [
+    ],
+
+    plugins: [
+      eslint(),
+
+      commonjs({
+        sourceMap: false,
+      }),
+
+      resolve({
+        browser: true,
+      }),
+
+      babel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
+      }),
+
+      // terser({
+      //   format: {
+      //     max_line_len: 120,
+      //   }
+      // }),
+    ],
+
+    output: { file: '$$/emitter.js', format: 'cjs', exports: 'default' },
+  },
 ];
