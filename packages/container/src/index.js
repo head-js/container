@@ -5,6 +5,13 @@ export function $create(options) {
 }
 
 
+export function $id(id) {
+  const { head } = window;
+  const $c = head.container.id(id);
+  return $c;
+}
+
+
 export function $script(id, name, fn) {
   const { head } = window;
   if (fn) {

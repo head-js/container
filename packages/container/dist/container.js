@@ -26,9 +26,15 @@ function $create(options) {
   var $c = head.container.create(options);
   return $c;
 }
-function $script(id, name, fn) {
+function $id(id) {
   var _window2 = window,
     head = _window2.head;
+  var $c = head.container.id(id);
+  return $c;
+}
+function $script(id, name, fn) {
+  var _window3 = window,
+    head = _window3.head;
   if (fn) {
     head.container.script(id, name, fn);
   } else {
@@ -39,5 +45,6 @@ function $script(id, name, fn) {
 
 exports.$create = $create;
 exports.$dispatch = $dispatch;
+exports.$id = $id;
 exports.$script = $script;
 exports.$session = $session;
